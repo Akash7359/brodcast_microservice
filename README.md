@@ -1,4 +1,4 @@
-# 📬 s2s-service-smtp
+# 📬 s2s-service-brodcast
 
 > **Outbound Communications Microservice** — Email (SMTP) + SMS (Gupshup) via a single authenticated REST API.
 > Python 3.11 · FastAPI 0.115 · PostgreSQL · Redis · Docker
@@ -37,7 +37,7 @@
 
 ## Overview
 
-`s2s-service-smtp` is an **async FastAPI microservice** for outbound communications. It consolidates email and SMS delivery behind a single authenticated endpoint, with full audit logging, HMAC request verification, and per-IP rate limiting.
+`s2s-service-brodcast` is an **async FastAPI microservice** for outbound communications. It consolidates email and SMS delivery behind a single authenticated endpoint, with full audit logging, HMAC request verification, and per-IP rate limiting.
 
 It is a Python rewrite of an original Laravel Lumen service, preserving all functional behaviour while adopting modern async-first patterns.
 
@@ -93,7 +93,7 @@ Client
 ## Project Structure
 
 ```
-s2s-service-smtp/
+s2s-service-brodcast/
 │
 ├── app/
 │   ├── main.py                          # FastAPI app factory, CORS, lifespan
@@ -164,7 +164,7 @@ Health check. No authentication required.
 ```json
 {
   "status": "ok",
-  "service": "s2s-service-smtp",
+  "service": "s2s-service-brodcast",
   "version": "1.0.0"
 }
 ```
@@ -266,7 +266,7 @@ Returns all category types available in the system.
 ## Request Flow
 
 ```
-POST /v1/send-smtp
+POST /v1/send-brodcast
       │
       ▼
 ┌─────────────────────────────┐
@@ -286,7 +286,7 @@ POST /v1/send-smtp
 └─────────────────────────────┘
       │ valid
       ▼
-  Persist smtp_details (status = 1 PENDING)
+  Persist brodcast_details (status = 1 PENDING)
       │
       ▼
   Lookup product_category_template_mapping
@@ -339,7 +339,7 @@ POST /v1/send-smtp
      └─────────────────────────────────┘
 
      ┌─────────────────────────────────┐
-     │  smtp_details                   │  (audit log)
+     │  brodcast_details                   │  (audit log)
      │─────────────────────────────────│
      │  id (PK)                        │
      │  project_id                     │
@@ -367,8 +367,8 @@ POST /v1/send-smtp
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/your-org/s2s-service-smtp.git
-cd s2s-service-smtp
+git clone https://github.com/your-org/s2s-service-brodcast.git
+cd s2s-service-brodcast
 
 # 2. Copy and configure environment
 cp .env.example .env
