@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>OTP Verification</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; }
+    .container { max-width: 520px; margin: 40px auto; background: #fff; padding: 32px; border-radius: 8px; }
+    .otp { font-size: 36px; font-weight: bold; color: #2563eb; letter-spacing: 8px; margin: 24px 0; }
+    .footer { font-size: 12px; color: #888; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>OTP Verification</h2>
+    <p>Hello {{ name | default("User") }},</p>
+    <p>Your One-Time Password (OTP) is:</p>
+    <div class="otp">{{ otp }}</div>
+    <p>This OTP is valid for <strong>10 minutes</strong>. Do not share it with anyone.</p>
+    <div class="footer">
+      &copy; {{ year | default("2025") }} Your Company. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>
